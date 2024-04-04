@@ -1,7 +1,8 @@
 ---
 - name: testing in sample
+  gather_facts: no
   hosts: all
   tasks:
     - name: echo
       debug: 
-        msg: "{{ ansible_hostname }}"
+        msg: "This is testing playbook"
