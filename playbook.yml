@@ -1,4 +1,7 @@
 ---
-- name: echo
-  debug: 
-    msg: "{{ ansible_hostname }}"
+- name: testing in sample
+  hosts: all
+  tasks:
+    - name: echo
+      debug: 
+        msg: "{{ ansible_hostname }}"
