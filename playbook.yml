@@ -1,0 +1,4 @@
+---
+- name: echo
+  debug: 
+    msg: "{{ ansible_hostname }}"
