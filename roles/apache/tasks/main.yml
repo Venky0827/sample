@@ -1,0 +1,38 @@
+---
+# tasks file for roles/apache
+
+- name: install packages
+  yum:
+    name: "{{ package }}"
+    state: present
+  loop_control:
+    loop_var: package
+  loop:
+    - httpd
+    - firewalld
+
+- name: start firewall service
+  service:
+    name: firewalld
+    state: started
+    enabled: yes
+
+- name: change host page
+  template:
+    src: template.j2
+    dest: /var/www/html/index.html
+
+- name: add http in firewall
+  firewalld:
+    service: http
+    state: enabled
+    permanent: yes
+    immediate: yes
+
+- name: start httpd
+  service:
+    name: httpd
+    state: started
+    enabled: yes
+
+

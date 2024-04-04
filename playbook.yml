@@ -1,8 +1,8 @@
 ---
-- name: testing in sample
+- name: install httpd and configuring to host webpage
+  hosts: localhost
   gather_facts: no
-  hosts: all
   tasks:
-    - name: echo
-      debug: 
-        msg: "This is updated testing webhook playbook"
+    - name: Calling the Apache role for installation
+      ansible.builtin.import_role:
+        name: apache
